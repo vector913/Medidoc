@@ -1,18 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     package="com.example.medidoc">
-
-    <TextView
-        app:layout_constraintBootom_toBotttomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"/>
-
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -22,11 +10,18 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
             </intent-filter>
+
         </activity>
+        <activity android:name=".find_pswd" />
+        <activity android:name=".join" />
+        <activity android:name=".main_view" />
+        <activity android:name=".sender_add" />
+        <activity android:name=".sendlist" />
+        <activity android:name=".set_mystatus" />
+        <activity android:name=".setting" />
+        <activity android:name=".find_id" />
     </application>
 
 </manifest>
