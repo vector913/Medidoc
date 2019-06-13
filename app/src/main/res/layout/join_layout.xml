@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="회원가입"
-        android:textSize="40dp"
         android:textColor="@android:color/black"
+        android:textSize="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -61,8 +63,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="15"
-        android:text="생년월일"
         android:inputType="date"
+        android:text="생년월일"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -70,29 +72,33 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.451" />
 
-    <RadioButton
-        android:id="@+id/join_boy"
-        android:layout_width="wrap_content"
+    <RadioGroup
+        android:id="@+id/join_rg"
+        android:layout_width="321dp"
         android:layout_height="wrap_content"
-        android:text="남자"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.127"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.526" />
+        android:layout_above="@+id/join_weight"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/join_weight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/join_calender">
 
-    <RadioButton
-        android:id="@+id/join_girl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="여자"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.337"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.526" />
+        <RadioButton
+            android:id="@+id/join_boy"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:text="남자" />
+
+        <RadioButton
+            android:id="@+id/join_girl"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:text="여자" />
+    </RadioGroup>
 
     <EditText
         android:id="@+id/join_weight"
@@ -138,8 +144,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:color/holo_blue_light"
-        android:textColor="@android:color/white"
         android:text="중복확인"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.863"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -152,12 +158,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:color/holo_blue_light"
-        android:textColor="@android:color/white"
         android:text="확인"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.857"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.897" />
+
 </android.support.constraint.ConstraintLayout>
