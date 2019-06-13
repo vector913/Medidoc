@@ -42,7 +42,30 @@ public class join extends AppCompatActivity {
                 if(ids == null){
                     Toast.makeText(getApplicationContext(),"ID를 입력해주세요!", Toast.LENGTH_LONG);
                 }
-
+                String pswds = pswd.getText().toString();
+                if(pswds == null){
+                    Toast.makeText(getApplicationContext(),"패스워드를 입력해주세요!", Toast.LENGTH_LONG);
+                }
+                String pswchs = pswd_ch.getText().toString();
+                if(pswchs == null){
+                    Toast.makeText(getApplicationContext(),"ID를 입력해주세요!", Toast.LENGTH_LONG);
+                }
+                String birthdates = birthdate.getText().toString();
+                if( birthdates == null){
+                    Toast.makeText(getApplicationContext(),"생년 월일을 입력해주세요!", Toast.LENGTH_LONG);
+                }
+                String weights = weight.getText().toString();
+                if(weights == null){
+                    Toast.makeText(getApplicationContext(),"몸무게를 입력해주세요!", Toast.LENGTH_LONG);
+                }
+                String specifis = spec.getText().toString();
+                if(specifis == null){
+                    Toast.makeText(getApplicationContext(),"특이사항을 입력해주세요!", Toast.LENGTH_LONG);
+                }
+                String emails = email.getText().toString();
+                if(emails == null){
+                    Toast.makeText(getApplicationContext(),"email을 입력해주세요!", Toast.LENGTH_LONG);
+                }
             }
         });
 
