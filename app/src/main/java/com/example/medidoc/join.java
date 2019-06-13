@@ -42,6 +42,7 @@ public class join extends AppCompatActivity {
                 if(ids == null){
                     Toast.makeText(getApplicationContext(),"ID를 입력해주세요!", Toast.LENGTH_LONG);
                 }
+
             }
         });
 
