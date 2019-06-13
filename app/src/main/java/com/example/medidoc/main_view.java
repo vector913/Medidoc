@@ -23,5 +23,4 @@ public class main_view extends AppCompatActivity {
         });
     }
 
-
 }
