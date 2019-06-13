@@ -23,7 +23,7 @@ public class join extends AppCompatActivity {
         final SharedPreferences settings = getApplicationContext().getSharedPreferences("mediSettings",0);
        final String mediSettings = settings.getString("mediSettings",null);
 
-        final RadioGroup rg = findViewById(R.id.join_rg);
+        final RadioGroup rgroup = findViewById(R.id.join_rg);
         final EditText id = findViewById(R.id.join_id);
         final EditText pswd = findViewById(R.id.join_password);
         final EditText pswd_ch = findViewById(R.id.join_password_check);
@@ -60,7 +60,7 @@ public class join extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"생년 월일을 입력해주세요!", Toast.LENGTH_LONG);
                     check = 1;
                 }
-                int sexs = rg.getCheckedRadioButtonId();
+                int sexs = rgroup.getCheckedRadioButtonId();
                 if(sexs == R.id.join_boy){
                     sexs = 0;
                 }else if(sexs == R.id.join_girl){
