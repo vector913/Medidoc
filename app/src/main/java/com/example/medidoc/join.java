@@ -17,6 +17,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
+import static java.lang.Integer.parseInt;
+
 public class join extends AppCompatActivity {
 
     @Override
@@ -73,24 +75,24 @@ public class join extends AppCompatActivity {
             public void onClick(View v) {
                int check = 0;
                 String ids = id.getText().toString();
-              if(ids.equals("아이디")){
+              if(ids.equals("아이디")&&check!=1){
                     Toast.makeText(getApplicationContext(),"ID를 입력해주세요!", Toast.LENGTH_LONG).show();
                     check = 1;
               }
 
                 String pswds = pswd.getText().toString();
-                if(pswds.equals("비밀번호")){
+                if(pswds.equals("비밀번호")&&check!=1){
                     Toast.makeText(getApplicationContext(),"패스워드를 입력해주세요!", Toast.LENGTH_LONG).show();
                     check = 1;
                 }
                 String pswchs = pswd_ch.getText().toString();
-                if(!pswchs.equals(pswds)){
+                if(!pswchs.equals(pswds)&&check!=1){
                     Toast.makeText(getApplicationContext(),"비밀번호 확인이 같지 않습니다.", Toast.LENGTH_LONG).show();
                     check = 1;
                 }
 
                 String birthdates = birthdate.getText().toString();
-                if( birthdates.equals("생년월일")){
+                if( birthdates.equals("생년월일")&&check!=1){
                     Toast.makeText(getApplicationContext(),"생년 월일을 입력해주세요!", Toast.LENGTH_LONG).show();
                     check = 1;
                 }
@@ -99,24 +101,26 @@ public class join extends AppCompatActivity {
                     sexs = 0;
                 }else if(sexs == R.id.join_girl){
                     sexs = 1;
-                }else{
+                }else if(check!=1){
                     Toast.makeText(getApplicationContext(),"성별을 선택바랍니다.",Toast.LENGTH_LONG).show();
                     check = 1;
                 }
-                 /*int weights;
+                int weights = 0;
                 String tmp = weight.getText().toString();
-                weights = Integer.parseInt(tmp);
-                if(weights == 0){
+                if(tmp.equals("몸무게")&&check!=1){
                     Toast.makeText(getApplicationContext(),"몸무게를 입력해주세요!", Toast.LENGTH_LONG).show();
                     check = 1;
+                }else if (check == 0){
+                    weights = parseInt(tmp);
                 }
+
                 String specifis = spec.getText().toString();
-                if(specifis.equals("특이사항")){
+                if(specifis.equals("특이사항")&&check!=1){
                     Toast.makeText(getApplicationContext(),"특이사항을 입력해주세요!", Toast.LENGTH_LONG).show();
                     check = 1;
                 }
-                String emails = email.getText().toString();
-                if(emails.equals("이메일")){
+                 String emails = email.getText().toString();
+                if(emails.equals("examle@email.com")&&check!=1){
                     Toast.makeText(getApplicationContext(),"email을 입력해주세요!", Toast.LENGTH_LONG).show();
                     check = 1;
                 }
@@ -130,9 +134,9 @@ public class join extends AppCompatActivity {
                     editor.putString("useremail",emails);
                     editor.putInt("usersex",sexs);
                     editor.apply();
-                    Intent to_find_id = new Intent(v.getContext(),join.class);
+                    Intent to_find_id = new Intent(v.getContext(),MainActivity.class);
                     startActivityForResult(to_find_id, 0);
-                }*/
+                }
             }
         });
 
