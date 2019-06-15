@@ -7,13 +7,13 @@ import android.view.View;
 import android.widget.Button;
 
 public class main_view extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.status_layout);
 
         Button for_set = findViewById(R.id.status_to_setting);
-
         for_set.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
