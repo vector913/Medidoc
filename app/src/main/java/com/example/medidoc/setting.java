@@ -16,7 +16,7 @@ public class setting extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.setting_layout);
-         final  int REQUEST_ENABLE_BT = 1;
+        final  int REQUEST_ENABLE_BT = 1;
         final Context context = this;
         Button exit = findViewById(R.id.exit_setting);
         Button senderlist = findViewById(R.id.to_send_text_setting);
@@ -44,14 +44,8 @@ public class setting extends AppCompatActivity {
             public void onClick(View v) {
                 BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
-                if (mBluetoothAdapter != null) {
-                    // Device supports Bluetooth
-                    if (!mBluetoothAdapter.isEnabled()) {
-                        // Bluetooth isn't enabled, so enable it.
-                        Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-                        startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
-                    }
-                }
+                Intent to_bluetooth = new Intent(v.getContext(),bluetooth.class);
+                startActivityForResult(to_bluetooth,0);
             }
         });
         infosetting.setOnClickListener(new View.OnClickListener() {

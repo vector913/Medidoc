@@ -3,6 +3,7 @@
     package="com.example.medidoc">
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -26,6 +27,7 @@
         <activity android:name=".set_mystatus" />
         <activity android:name=".setting" />
         <activity android:name=".find_id" />
+        <activity android:name=".bluetooth" />
     </application>
 
 </manifest>

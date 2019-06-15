@@ -1,7 +1,10 @@
 package com.example.medidoc;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 
 public class sendlist extends AppCompatActivity {
     @Override
@@ -9,5 +12,14 @@ public class sendlist extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sender_layout);
 
+        Button sender_add = findViewById(R.id.sender_add);
+
+        sender_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent to_find_id = new Intent(v.getContext(),sender_add.class);
+                startActivityForResult(to_find_id,0);
+            }
+        });
     }
 }
