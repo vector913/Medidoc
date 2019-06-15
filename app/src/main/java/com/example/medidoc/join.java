@@ -3,14 +3,13 @@ package com.example.medidoc;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.RadioGroup;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
@@ -130,6 +129,7 @@ public class join extends AppCompatActivity {
                     editor.putString("userid",ids);
                     editor.putString("userpswd",pswds);
                     editor.putInt("userweight",weights);
+                    editor.putString("userbirth",birthdates);
                     editor.putString("userspec",specifis);
                     editor.putString("useremail",emails);
                     editor.putInt("usersex",sexs);

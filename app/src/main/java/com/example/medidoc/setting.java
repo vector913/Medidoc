@@ -21,7 +21,7 @@ public class setting extends AppCompatActivity {
         Button exit = findViewById(R.id.exit_setting);
         Button senderlist = findViewById(R.id.to_send_text_setting);
         Button deviceconnect = findViewById(R.id.device_setting);
-        Button infosetting = findViewById(R.id.info_reset);
+        Button infosetting = findViewById(R.id.my_info_setting);
         Button reset = findViewById(R.id.info_reset);
 
         exit.setOnClickListener(new View.OnClickListener() {

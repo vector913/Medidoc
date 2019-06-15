@@ -17,7 +17,7 @@
         app:layout_constraintVertical_bias="0.059" />
 
     <TextView
-        android:id="@+id/join_id"
+        android:id="@+id/my_info_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -30,7 +30,7 @@
         app:layout_constraintVertical_bias="0.188" />
 
     <EditText
-        android:id="@+id/join_password"
+        android:id="@+id/my_info_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="15"
@@ -43,7 +43,7 @@
         app:layout_constraintVertical_bias="0.271" />
 
     <EditText
-        android:id="@+id/join_password_check"
+        android:id="@+id/my_info_password_check"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="15"
@@ -55,98 +55,73 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.362" />
 
-    <EditText
-        android:id="@+id/join_calender"
+    <TextView
+        android:id="@+id/my_info_calender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="15"
         android:text="생년월일"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.281"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.451" />
+        app:layout_constraintVertical_bias="0.453" />
 
-    <RadioButton
-        android:id="@+id/join_boy"
+    <TextView
+        android:id="@+id/my_info_sex"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="남자"
+        android:ems="15"
+        android:text="성별"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.127"
+        app:layout_constraintHorizontal_bias="0.281"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.526" />
+        app:layout_constraintVertical_bias="0.532" />
 
-    <RadioButton
-        android:id="@+id/join_girl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="여자"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.337"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.526" />
-
-    <EditText
-        android:id="@+id/join_weight"
+    <TextView
+        android:id="@+id/my_info_weight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="15"
         android:text="몸무게"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.281"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.604" />
+        app:layout_constraintVertical_bias="0.613" />
 
-    <EditText
-        android:id="@+id/join_specific"
+    <TextView
+        android:id="@+id/my_info_specific"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="15"
         android:text="특이사항"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.281"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.695" />
+        app:layout_constraintVertical_bias="0.692" />
 
-    <EditText
-        android:id="@+id/join_email"
+    <TextView
+        android:id="@+id/my_info_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="15"
         android:text="example@email.com"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.281"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.791" />
+        app:layout_constraintVertical_bias="0.78" />
 
     <Button
-        android:id="@+id/join_button_check"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:color/holo_blue_light"
-        android:textColor="@android:color/white"
-        android:text="중복확인"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.863"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.178" />
-
-    <Button
-        android:id="@+id/join_button_confirm"
+        android:id="@+id/my_info_button_confirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:color/holo_blue_light"
