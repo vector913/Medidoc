@@ -70,7 +70,7 @@
         app:layout_constraintVertical_bias="0.614" />
 
     <Button
-        android:id="@+id/find_password_button"
+        android:id="@+id/exit_setting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="닫기"
