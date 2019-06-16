@@ -19,39 +19,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.038" />
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/relativeLayout"
-        android:layout_width="fill_parent"
-        android:layout_height="?android:attr/listPreferredItemHeight"
-        android:gravity="center">
 
-        <TextView
-            android:id="@+id/first"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toLeftOf="@+id/second"
-            android:text="first"
-            android:textSize="12sp" />
-
-        <TextView
-            android:id="@+id/second"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toLeftOf="@+id/third"
-            android:layout_toRightOf="@+id/first"
-            android:gravity="center_horizontal"
-            android:text="second"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/third"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/second"
-            android:text="third"
-            android:textSize="16sp" />
-
-    </RelativeLayout>
     <Button
         android:id="@+id/sender_add"
         android:layout_width="wrap_content"
