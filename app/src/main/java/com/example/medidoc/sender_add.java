@@ -30,7 +30,8 @@ public class sender_add extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sender_add_layout);
-
+        final ArrayList<String> names;
+        final ArrayList<String> phones;
         Button phonebooks = findViewById(R.id.in_phonebook);
         Button register = findViewById(R.id.sender_add_button);
         Button cancels = findViewById(R.id.add_cancel);
@@ -44,8 +45,6 @@ public class sender_add extends AppCompatActivity {
         Set<String> namel = number_list.getStringSet("phonename",null);
 
 
-          final  ArrayList<String> names = new ArrayList<String>(namel);
-          final  ArrayList<String> phones = new ArrayList<String>(phonel);
 
 
         phonebooks.setOnClickListener(new View.OnClickListener() {
@@ -63,6 +62,13 @@ public class sender_add extends AppCompatActivity {
             }
         });
 
+        if(namel!=null&&phonel!=null) {
+            names = new ArrayList<String>(namel);
+            phones = new ArrayList<String>(phonel);
+        }else{
+            names = new ArrayList<String>();
+            phones = new ArrayList<String>();
+        }
         register.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
