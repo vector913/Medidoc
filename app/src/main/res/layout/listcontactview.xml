@@ -1,26 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="New Text"
             android:id="@+id/nameview"
-            android:textSize="24dp"
-            android:textColor="#000000"
-            android:gravity="center_vertical"
-            android:layout_weight="2" />
-
-        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="New Text"
-            android:id="@+id/phoneview"
-            android:textSize="16dp"
-            android:textColor="#666666"
-            android:layout_weight="1" />
+            android:layout_alignBottom="@+id/phoneview"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:text="name"
+            android:textColor="#000000"
+            android:layout_gravity="center_horizontal"
+            android:textAppearance="?android:textAppearanceLarge"/>
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/phoneview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="0dp"
+            android:text="phone"
+            android:textColor="#666666"
+            android:textAppearance="?android:textAppearanceSmall"/>
+
+</LinearLayout>
