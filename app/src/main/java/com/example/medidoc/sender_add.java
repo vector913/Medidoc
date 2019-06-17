@@ -1,16 +1,25 @@
 package com.example.medidoc;
 
+import android.Manifest;
+import android.annotation.TargetApi;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -24,6 +33,9 @@ public class sender_add extends AppCompatActivity {
     private String contactID;
     private String contactNumber = null;
     private  String contactName = null;
+    private int requestCode;
+    private int resultCode;
+    Intent data;
     EditText addn;
     EditText adds;
     @Override
@@ -50,7 +62,7 @@ public class sender_add extends AppCompatActivity {
         phonebooks.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivityForResult(new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI), REQUEST_CODE_PICK_CONTACTS);
+                startActivityForResult(new Intent(Intent.ACTION_PICK, ContactsContract.CommonDataKinds.Phone.CONTENT_URI), REQUEST_CODE_PICK_CONTACTS);
             }
         });
 
@@ -97,68 +109,112 @@ public class sender_add extends AppCompatActivity {
         if(requestCode == REQUEST_CODE_PICK_CONTACTS&&resultCode == RESULT_OK){
             Log.d(TAG,"Response: " + data.toString());
             uriContact = data.getData();
-
-            retrieveContactName();
-            retrieveContactNumber();
+            this.requestCode = requestCode;
+            this.resultCode = resultCode;
+            this.data = data;
+          askForContactPermission();
 
             addn.setText(contactNumber);
             adds.setText(contactName);
         }
     }
 
-    private void retrieveContactNumber() {
 
+    private void getContact(){
 
-        // getting contacts ID
-        Cursor cursorID = getContentResolver().query(uriContact,
-                new String[]{ContactsContract.Contacts._ID},
-                null, null, null);
+        if(requestCode == REQUEST_CODE_PICK_CONTACTS&&resultCode==RESULT_OK) {
+            Cursor contctCursorVar = getContentResolver().query(uriContact, null,
+                    null, null, null);
+            if (contctCursorVar.getCount() > 0) {
+                //contctCursorVar.moveToFirst();
+                while (contctCursorVar.moveToNext()) {
+                    contactID = contctCursorVar.getString(contctCursorVar.getColumnIndex(ContactsContract.CommonDataKinds.Phone.CONTACT_ID));
 
-        if (cursorID.moveToFirst()) {
+                    contactName = contctCursorVar.getString(contctCursorVar.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
 
-            contactID = cursorID.getString(cursorID.getColumnIndex(ContactsContract.Contacts._ID));
+                    Log.i("Names", contactName);
+
+                    if (Integer.parseInt(contctCursorVar.getString(contctCursorVar.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER))) > 0) {
+                        // Query phone here. Covered next
+                        contactNumber = contctCursorVar.getString(contctCursorVar.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+                        Log.i("Number", contactNumber);
+                    }
+
+                }
+                contctCursorVar.close();
+            }
         }
-
-        cursorID.close();
-
-        Log.d(TAG, "Contact ID: " + contactID);
-
-        // Using the contact ID now we will get contact phone number
-        Cursor cursorPhone = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
-                new String[]{ContactsContract.CommonDataKinds.Phone.NUMBER},
-
-                ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = ? AND " +
-                        ContactsContract.CommonDataKinds.Phone.TYPE + " = " +
-                        ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE,
-
-                new String[]{contactID},
-                null);
-
-        if (cursorPhone.moveToFirst()) {
-            contactNumber = cursorPhone.getString(cursorPhone.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
-        }
-
-        cursorPhone.close();
-
-        Log.d(TAG, "Contact Phone Number: " + contactNumber);
     }
 
-    private void retrieveContactName() {
+    public void askForContactPermission(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (ContextCompat.checkSelfPermission(sender_add.this, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
 
+                // Should we show an explanation?
+                if (ActivityCompat.shouldShowRequestPermissionRationale(sender_add.this,
+                        Manifest.permission.READ_CONTACTS)) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(sender_add.this);
+                    builder.setTitle("Contacts access needed");
+                    builder.setPositiveButton(android.R.string.ok, null);
+                    builder.setMessage("please confirm Contacts access");//TODO put real question
+                    builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                        @TargetApi(Build.VERSION_CODES.M)
+                        @Override
+                        public void onDismiss(DialogInterface dialog) {
+                            requestPermissions(
+                                    new String[]
+                                            {Manifest.permission.READ_CONTACTS}
+                                    , REQUEST_CODE_PICK_CONTACTS);
+                        }
+                    });
+                    builder.show();
+                    // Show an expanation to the user *asynchronously* -- don't block
+                    // this thread waiting for the user's response! After the user
+                    // sees the explanation, try again to request the permission.
 
-        // querying contact data store
-        Cursor cursor = getContentResolver().query(uriContact, null, null, null, null);
+                } else {
 
-        if (cursor.moveToFirst()) {
+                    // No explanation needed, we can request the permission.
 
-            // DISPLAY_NAME = The display name for the contact.
-            // HAS_PHONE_NUMBER =   An indicator of whether this contact has at least one phone number.
+                    ActivityCompat.requestPermissions(sender_add.this,
+                            new String[]{Manifest.permission.READ_CONTACTS},
+                            REQUEST_CODE_PICK_CONTACTS);
 
-            contactName = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
+                    // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+                    // app-defined int constant. The callback method gets the
+                    // result of the request.
+                }
+            }else{
+                getContact();
+            }
         }
+        else{
+            getContact();
+        }
+    }
 
-        cursor.close();
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case REQUEST_CODE_PICK_CONTACTS: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    getContact();
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
 
-        Log.d(TAG, "Contact Name: " + contactName);
+                } else {
+                    Toast.makeText(getApplicationContext(),"전화번호부에 접근권한이 없습니다.", Toast.LENGTH_LONG).show();
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                }
+                return;
+            }
+
+            // other 'case' lines to check for other
+            // permissions this app might request
+        }
     }
 }

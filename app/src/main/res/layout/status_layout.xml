@@ -45,17 +45,45 @@
         app:layout_constraintVertical_bias="0.428" />
 
     <TextView
-        android:id="@+id/GPS_info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="15"
-        android:text="GPS 정보"
+        android:id="@+id/GPS_info1"
+        android:layout_width="191dp"
+        android:layout_height="21dp"
+        android:ems="10"
+        android:text="GPS 정보 위도"
         android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.363"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.601" />
+        app:layout_constraintVertical_bias="0.584" />
+
+    <TextView
+        android:id="@+id/GPS_info2"
+        android:layout_width="191dp"
+        android:layout_height="21dp"
+        android:ems="10"
+        android:text="GPS 정보 경도"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.363"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.63" />
+
+    <Button
+        android:id="@+id/GPS_info_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GPS 활성화"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.858"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.607" />
 
     <TextView
         android:id="@+id/frequency_info"

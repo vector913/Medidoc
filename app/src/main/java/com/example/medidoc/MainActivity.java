@@ -63,16 +63,16 @@ public class MainActivity extends AppCompatActivity {
                 String pswd = settings.getString("userpswd",null);
                 String ids = id_input.getText().toString();
                 String pswds = pswd_input.getText().toString();
+                if(id!=null&&pswd!=null) {
+                    if (id.equals(ids) || pswd.equals(pswds)) {
 
-                    if (id.equals(ids) && pswd.equals(pswds)) {
-
-                        if(maintain.isChecked()){
+                        if (maintain.isChecked()) {
                             SharedPreferences.Editor editor = settings.edit();
-                            editor.putInt("maintain",1);
+                            editor.putInt("maintain", 1);
                             editor.apply();
-                        }else{
+                        } else {
                             SharedPreferences.Editor editor = settings.edit();
-                            editor.putInt("maintain",0);
+                            editor.putInt("maintain", 0);
                             editor.apply();
                         }
                         Intent to_main_view = new Intent(v.getContext(), main_view.class);
@@ -81,9 +81,10 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "아이디나 비밀번호가 입력되지 않았습니다!", Toast.LENGTH_LONG).show();
                     } else if (!id.equals(ids) || !pswd.equals(pswds)) {
                         Toast.makeText(getApplicationContext(), "아이디나 비밀번호가 올바르지 않습니다", Toast.LENGTH_LONG).show();
-                    } else if (id.equals(null) || pswd.equals(null)) {
-                        Toast.makeText(getApplicationContext(), "아이디나 이메일이 등록된것이 없습니다", Toast.LENGTH_LONG).show();
                     }
+                }else{
+                    Toast.makeText(getApplicationContext(), "아이디나 이메일이 등록된것이 없습니다", Toast.LENGTH_LONG).show();
+                }
 
             }
         });
