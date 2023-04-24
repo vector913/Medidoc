@@ -1,4 +1,4 @@
-package com.example.medidoc;
+package com.example.medidoc.activity;
 
 import android.Manifest;
 import android.content.Context;
@@ -18,10 +18,14 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.medidoc.R;
+import com.example.medidoc.data.adapter.CustomAdapter;
+import com.example.medidoc.data.phonebook;
+
 import java.util.ArrayList;
 import java.util.Set;
 
-public class sendlist extends AppCompatActivity {
+public class sendlistactivity extends AppCompatActivity {
 
     private static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS =1;
     ArrayList<phonebook> phonebooklist;
@@ -110,7 +114,7 @@ public class sendlist extends AppCompatActivity {
         closes.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
-              Intent to_find_id = new Intent(v.getContext(),main_view.class);
+              Intent to_find_id = new Intent(v.getContext(), mainViewactivity.class);
               startActivityForResult(to_find_id,0);
           }
       });
@@ -118,7 +122,7 @@ public class sendlist extends AppCompatActivity {
       sender_add.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
-               Intent to_find_id = new Intent(v.getContext(),sender_add.class);
+               Intent to_find_id = new Intent(v.getContext(), senderaddactivity.class);
                 startActivityForResult(to_find_id,0);
            }
        });
@@ -126,9 +130,9 @@ public class sendlist extends AppCompatActivity {
     private void requestSmsPermission() {
 
         // check permission is given
-        if (ContextCompat.checkSelfPermission(sendlist.this, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(sendlistactivity.this, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
             // request permission (see result in onRequestPermissionsResult() method)
-            ActivityCompat.requestPermissions(sendlist.this,
+            ActivityCompat.requestPermissions(sendlistactivity.this,
                     new String[]{Manifest.permission.SEND_SMS},
                     PERMISSION_SEND_SMS);
         } else {

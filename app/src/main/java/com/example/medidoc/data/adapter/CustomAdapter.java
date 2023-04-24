@@ -1,4 +1,4 @@
-package com.example.medidoc;
+package com.example.medidoc.data.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,13 +7,17 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.example.medidoc.R;
+import com.example.medidoc.data.phonebook;
+import com.example.medidoc.activity.sendlistactivity;
+
 import java.util.ArrayList;
 
 public class CustomAdapter extends BaseAdapter {
 
     Context context;
     ArrayList<phonebook> phonebooklist;
-    public CustomAdapter(sendlist activity, ArrayList<phonebook> phonebooklist) {
+    public CustomAdapter(sendlistactivity activity, ArrayList<phonebook> phonebooklist) {
         this.context = activity;
         this.phonebooklist = phonebooklist;
     }

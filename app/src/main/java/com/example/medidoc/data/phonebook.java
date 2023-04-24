@@ -1,4 +1,4 @@
-package com.example.medidoc;
+package com.example.medidoc.data;
 
 public class phonebook {
 

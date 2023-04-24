@@ -25,20 +25,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
             </intent-filter>
         </activity>
-        <activity android:name=".find_pswd" />
-        <activity android:name=".join" />
-        <activity android:name=".main_view" />
-        <activity android:name=".sender_add" />
-        <activity android:name=".sendlist" />
-        <activity android:name=".set_mystatus" />
-        <activity android:name=".setting" />
-        <activity android:name=".find_id" />
-        <activity android:name=".bluetooth" />
+        <activity android:name=".activity.findpswdactivity" />
+        <activity android:name=".activity.joinactivity" />
+        <activity android:name=".activity.mainViewactivity" />
+        <activity android:name=".activity.senderaddactivity" />
+        <activity android:name=".activity.sendlistactivity" />
+        <activity android:name=".activity.setmystatusactivity" />
+        <activity android:name=".activity.settingactivity" />
+        <activity android:name=".activity.findidactivity" />
+        <activity android:name=".activity.bluetoothactivity" />
     </application>
 
 </manifest>

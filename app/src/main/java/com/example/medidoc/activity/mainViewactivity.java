@@ -1,4 +1,4 @@
-package com.example.medidoc;
+package com.example.medidoc.activity;
 
 import android.Manifest;
 import android.content.Intent;
@@ -12,14 +12,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class main_view extends AppCompatActivity {
+import com.example.medidoc.R;
+import com.example.medidoc.data.listener.gpsinfoListener;
+
+public class mainViewactivity extends AppCompatActivity {
 
     private final int PERMISSIONS_ACCESS_FINE_LOCATION = 1000;
     private final int PERMISSIONS_ACCESS_COARSE_LOCATION = 1001;
     private boolean isAccessFineLocation = false;
     private boolean isAccessCoarseLocation = false;
     private boolean isPermission = false;
-    private GpsInfo gps;
+    private gpsinfoListener gps;
     private Thread workerthread = null;
 
     @Override
@@ -51,7 +54,7 @@ public class main_view extends AppCompatActivity {
                                     return;
 
                                 }
-                                gps = new GpsInfo(main_view.this);
+                                gps = new gpsinfoListener(mainViewactivity.this);
                                 // GPS 사용유무 가져오기
                                 if (gps.isGetLocation()) {
 
@@ -65,8 +68,8 @@ public class main_view extends AppCompatActivity {
                                     gpsdata2.setText(sumd2);
 
                                     SharedPreferences.Editor editor = settings.edit();
-                                    editor.putFloat("longtitude", Float.valueOf(String.valueOf(longitude)));
-                                    editor.putFloat("latitude", Float.valueOf(String.valueOf(latitude)));
+                                    editor.putFloat("longtitude", Float.parseFloat(String.valueOf(longitude)));
+                                    editor.putFloat("latitude", Float.parseFloat(String.valueOf(latitude)));
                                     editor.apply();
                                 } else {
                                     // GPS 를 사용할수 없으므로
@@ -84,7 +87,7 @@ public class main_view extends AppCompatActivity {
         for_set.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent to_find_id = new Intent(v.getContext(),setting.class);
+                Intent to_find_id = new Intent(v.getContext(), settingactivity.class);
                 startActivityForResult(to_find_id,0);
             }
         });
@@ -96,7 +99,7 @@ public class main_view extends AppCompatActivity {
                     callPermission();
                     return;
                 }
-                gps = new GpsInfo(main_view.this);
+                gps = new gpsinfoListener(mainViewactivity.this);
                 // GPS 사용유무 가져오기
                 if (gps.isGetLocation()) {
 

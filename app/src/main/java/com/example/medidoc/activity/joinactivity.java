@@ -1,4 +1,4 @@
-package com.example.medidoc;
+package com.example.medidoc.activity;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -18,7 +18,9 @@ import java.util.Locale;
 
 import static java.lang.Integer.parseInt;
 
-public class join extends AppCompatActivity {
+import com.example.medidoc.R;
+
+public class joinactivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +65,7 @@ public class join extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                new DatePickerDialog(join.this, date, myCalendar
+                new DatePickerDialog(joinactivity.this, date, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
@@ -134,7 +136,7 @@ public class join extends AppCompatActivity {
                     editor.putString("useremail",emails);
                     editor.putInt("usersex",sexs);
                     editor.apply();
-                    Intent to_find_id = new Intent(v.getContext(),MainActivity.class);
+                    Intent to_find_id = new Intent(v.getContext(), MainActivity.class);
                     startActivityForResult(to_find_id, 0);
                 }
             }

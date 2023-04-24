@@ -1,4 +1,4 @@
-package com.example.medidoc;
+package com.example.medidoc.activity;
 
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
@@ -11,7 +11,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-public class setting extends AppCompatActivity {
+import com.example.medidoc.R;
+
+public class settingactivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +29,7 @@ public class setting extends AppCompatActivity {
         exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent to_main = new Intent(v.getContext(),MainActivity.class);
+                Intent to_main = new Intent(v.getContext(), MainActivity.class);
                 startActivityForResult(to_main,0);
             }
         });
@@ -35,7 +37,7 @@ public class setting extends AppCompatActivity {
         senderlist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent to_sender_list = new Intent(v.getContext(),sendlist.class);
+                Intent to_sender_list = new Intent(v.getContext(), sendlistactivity.class);
                 startActivityForResult(to_sender_list,0);
             }
         });
@@ -44,14 +46,14 @@ public class setting extends AppCompatActivity {
             public void onClick(View v) {
                 BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
-                Intent to_bluetooth = new Intent(v.getContext(),bluetooth.class);
+                Intent to_bluetooth = new Intent(v.getContext(), bluetoothactivity.class);
                 startActivityForResult(to_bluetooth,0);
             }
         });
         infosetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent to_sender_list = new Intent(v.getContext(),set_mystatus.class);
+                Intent to_sender_list = new Intent(v.getContext(), setmystatusactivity.class);
                 startActivityForResult(to_sender_list,0);
             }
         });
@@ -71,7 +73,7 @@ public class setting extends AppCompatActivity {
                                 SharedPreferences.Editor editor = settings.edit();
                                 editor.clear();
                                 editor.apply();
-                                Intent to_main = new Intent(v.getContext(),join.class);
+                                Intent to_main = new Intent(v.getContext(), joinactivity.class);
                                 startActivityForResult(to_main,0);
                             }
                         })

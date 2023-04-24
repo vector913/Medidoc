@@ -1,4 +1,4 @@
-package com.example.medidoc;
+package com.example.medidoc.data.listener;
 
 import android.annotation.TargetApi;
 import android.app.Service;
@@ -16,7 +16,7 @@ import android.provider.Settings;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 
-public class GpsInfo extends Service implements LocationListener {
+public class gpsinfoListener extends Service implements LocationListener {
     private final Context mContext;
 
 
@@ -63,7 +63,7 @@ public class GpsInfo extends Service implements LocationListener {
 
 
 
-    public GpsInfo(Context context) {
+    public gpsinfoListener(Context context) {
 
         this.mContext = context;
 
@@ -225,7 +225,7 @@ public class GpsInfo extends Service implements LocationListener {
 
         if(locationManager != null){
 
-            locationManager.removeUpdates(GpsInfo.this);
+            locationManager.removeUpdates(gpsinfoListener.this);
 
         }
 

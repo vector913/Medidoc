@@ -1,4 +1,4 @@
-package com.example.medidoc;
+package com.example.medidoc.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,7 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class find_pswd extends AppCompatActivity {
+import com.example.medidoc.R;
+
+public class findpswdactivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -1,4 +1,4 @@
-package com.example.medidoc;
+package com.example.medidoc.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,8 +10,10 @@ import android.widget.TextView;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.medidoc.R;
 
-public class set_mystatus extends AppCompatActivity {
+
+public class setmystatusactivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +52,7 @@ public class set_mystatus extends AppCompatActivity {
                     SharedPreferences.Editor editor = settings.edit();
                     editor.putString("userpswd",pswds);
                     editor.apply();
-                    Intent to_main_view = new Intent(v.getContext(), main_view.class);
+                    Intent to_main_view = new Intent(v.getContext(), mainViewactivity.class);
                     startActivityForResult(to_main_view, 0);
                 }else{
                     Toast.makeText(getApplicationContext(), "비밀번호가 일치 하지 않습니다.", Toast.LENGTH_LONG).show();
