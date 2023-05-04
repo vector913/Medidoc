@@ -1,10 +1,10 @@
 package com.example.medidoc.data;
 
-public class phonebook {
+public class PhoneBook {
 
     String name, num;
 
-    public phonebook(String name,String num){
+    public PhoneBook(String name, String num){
         this.name = name;
         this.num = num;
     }

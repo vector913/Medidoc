@@ -22,6 +22,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.medidoc.R;
+import com.example.medidoc.library.StandardLib;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -58,9 +59,6 @@ public class SenderAddActivity extends AppCompatActivity {
         Set<String> phonel = number_list.getStringSet("phonenum",null);
         Set<String> namel = number_list.getStringSet("phonename",null);
 
-
-
-
         phonebooks.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,8 +69,8 @@ public class SenderAddActivity extends AppCompatActivity {
         cancels.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent to_find_id = new Intent(v.getContext(), SettingActivity.class);
-                startActivityForResult(to_find_id,0);
+                setResult(RESULT_CANCELED);
+                finish();
             }
         });
 
@@ -100,8 +98,7 @@ public class SenderAddActivity extends AppCompatActivity {
                 editor.putStringSet("phonename",namel);
                 editor.apply();
 
-                Intent to_find_id = new Intent(v.getContext(), SendListActivity.class);
-                startActivityForResult(to_find_id,0);
+                StandardLib.openActivity(SenderAddActivity.this, SendListActivity.class);
             }
         });
 
@@ -114,7 +111,7 @@ public class SenderAddActivity extends AppCompatActivity {
             this.requestCode = requestCode;
             this.resultCode = resultCode;
             this.data = data;
-          askForContactPermission();
+            askForContactPermission();
 
             addn.setText(contactNumber);
             adds.setText(contactName);

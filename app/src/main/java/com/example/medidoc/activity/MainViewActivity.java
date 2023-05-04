@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.example.medidoc.R;
 import com.example.medidoc.data.listener.gpsinfoListener;
+import com.example.medidoc.library.StandardLib;
 
 public class MainViewActivity extends AppCompatActivity {
 
@@ -87,8 +88,7 @@ public class MainViewActivity extends AppCompatActivity {
         for_set.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent to_find_id = new Intent(v.getContext(), SettingActivity.class);
-                startActivityForResult(to_find_id,0);
+                StandardLib.openActivity(MainViewActivity.this, SettingActivity.class);
             }
         });
 

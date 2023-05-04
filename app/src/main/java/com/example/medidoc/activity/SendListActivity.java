@@ -20,7 +20,8 @@ import android.widget.Toast;
 
 import com.example.medidoc.R;
 import com.example.medidoc.data.adapter.CustomAdapter;
-import com.example.medidoc.data.phonebook;
+import com.example.medidoc.data.PhoneBook;
+import com.example.medidoc.library.StandardLib;
 
 import java.util.ArrayList;
 import java.util.Set;
@@ -28,7 +29,7 @@ import java.util.Set;
 public class SendListActivity extends AppCompatActivity {
 
     private static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS =1;
-    ArrayList<phonebook> phonebooklist;
+    ArrayList<PhoneBook> phonebooklist;
     CustomAdapter adapter;
     Button sender_add ;
     Button closes;
@@ -58,9 +59,9 @@ public class SendListActivity extends AppCompatActivity {
         if (phonel != null && namel != null) {
             names = new ArrayList<String>(namel);
             phones = new ArrayList<String>(phonel);
-            phonebooklist = new ArrayList<phonebook>();
+            phonebooklist = new ArrayList<PhoneBook>();
             for (int i = 0; i < names.size(); i++) {
-                phonebooklist.add(new phonebook(names.get(i), phones.get(i)));
+                phonebooklist.add(new PhoneBook(names.get(i), phones.get(i)));
             }
             lv = findViewById(R.id.listView);
             adapter = new CustomAdapter(this, phonebooklist);
@@ -114,16 +115,14 @@ public class SendListActivity extends AppCompatActivity {
         closes.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
-              Intent to_find_id = new Intent(v.getContext(), MainViewActivity.class);
-              startActivityForResult(to_find_id,0);
+              StandardLib.openActivity(SendListActivity.this,MainViewActivity.class);
           }
       });
 
       sender_add.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
-               Intent to_find_id = new Intent(v.getContext(), SenderAddActivity.class);
-                startActivityForResult(to_find_id,0);
+              StandardLib.openActivity(SendListActivity.this,SendListActivity.class);
            }
        });
     }

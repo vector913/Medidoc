@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.medidoc.R;
+import com.example.medidoc.library.StandardLib;
 
 
 public class SetMyStatusActivity extends AppCompatActivity {
@@ -31,8 +32,8 @@ public class SetMyStatusActivity extends AppCompatActivity {
 
         final SharedPreferences settings = getApplicationContext().getSharedPreferences(getResources().getString(R.string.prefKeyName),0);
 
-        id.setText("아이디 : "+settings.getString("userid",null));
-        calender.setText(settings.getString("userbirth",null));
+        id.setText("아이디 : "+settings.getString("userid",""));
+        calender.setText(settings.getString("userbirth",""));
         int sexnum = settings.getInt("usersex",0);
         if(sexnum == 0){
             sex.setText("성별 : 남자");
@@ -40,8 +41,8 @@ public class SetMyStatusActivity extends AppCompatActivity {
             sex.setText("성별 : 여자");
         }
        weight.setText("몸무게 : "+settings.getInt(""+"userweight",0));
-        specific.setText("특이사항 : "+settings.getString("userspec",null));
-        email.setText("email : "+settings.getString("useremail",null));
+        specific.setText("특이사항 : "+settings.getString("userspec",""));
+        email.setText("email : "+settings.getString("useremail",""));
 
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,8 +53,7 @@ public class SetMyStatusActivity extends AppCompatActivity {
                     SharedPreferences.Editor editor = settings.edit();
                     editor.putString("userpswd",pswds);
                     editor.apply();
-                    Intent to_main_view = new Intent(v.getContext(), MainViewActivity.class);
-                    startActivityForResult(to_main_view, 0);
+                    StandardLib.openActivity(SetMyStatusActivity.this,MainViewActivity.class);
                 }else{
                     Toast.makeText(getApplicationContext(), "비밀번호가 일치 하지 않습니다.", Toast.LENGTH_LONG).show();
                 }

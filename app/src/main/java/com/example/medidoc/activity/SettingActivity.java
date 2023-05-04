@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.medidoc.R;
+import com.example.medidoc.library.StandardLib;
 
 public class SettingActivity extends AppCompatActivity {
     //설정 Activity의 Button들
@@ -46,22 +47,19 @@ public class SettingActivity extends AppCompatActivity {
         senderlist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent to_sender_list = new Intent(v.getContext(), SendListActivity.class);
-                startActivityForResult(to_sender_list,0);
+                StandardLib.openActivity(SettingActivity.this,SendListActivity.class);
             }
         });
         deviceconnect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent to_bluetooth = new Intent(v.getContext(), BluetoothActivity.class);
-                startActivityForResult(to_bluetooth,0);
+                StandardLib.openActivity(SettingActivity.this,BluetoothActivity.class);
             }
         });
         infosetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent to_sender_list = new Intent(v.getContext(), SetMyStatusActivity.class);
-                startActivityForResult(to_sender_list,0);
+                StandardLib.openActivity(SettingActivity.this,SetMyStatusActivity.class);
             }
         });
         reset.setOnClickListener(new View.OnClickListener() {
@@ -79,8 +77,7 @@ public class SettingActivity extends AppCompatActivity {
                                 SharedPreferences.Editor editor = settings.edit();
                                 editor.clear();
                                 editor.apply();
-                                Intent to_main = new Intent(v.getContext(), JoinActivity.class);
-                                startActivityForResult(to_main,0);
+                                StandardLib.openActivity(SettingActivity.this, JoinActivity.class);
                             }
                         })
                         .setNegativeButton("취소", new DialogInterface.OnClickListener() {
