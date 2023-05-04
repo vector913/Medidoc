@@ -1,7 +1,6 @@
 package com.example.medidoc.activity;
 
 import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ParseException;
 import android.os.Bundle;
@@ -23,7 +22,7 @@ import static java.lang.Integer.parseInt;
 import com.example.medidoc.R;
 import com.example.medidoc.library.StringLib;
 
-public class joinactivity extends AppCompatActivity {
+public class JoinActivity extends AppCompatActivity {
 
     //Note 회원가입 절차에 필요한 View들.
     SharedPreferences settings;
@@ -90,7 +89,7 @@ public class joinactivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                new DatePickerDialog(joinactivity.this, date, myCalendar
+                new DatePickerDialog(JoinActivity.this, date, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }

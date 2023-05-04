@@ -12,22 +12,22 @@ import android.widget.Toast;
 
 import com.example.medidoc.R;
 
-public class findidactivity extends AppCompatActivity {
+public class FindPswdActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.id_find_layout);
+        setContentView(R.layout.password_find_layout);
 
-        Button send = findViewById(R.id.find_id_button);
-        EditText email = findViewById(R.id.find_id_email);
+        Button send = findViewById(R.id.find_password_button);
+        EditText email = findViewById(R.id.find_password_email);
 
-        //Note 수신자 리스트를 ,로 받는데 그걸 나중에 알아봐야할듯.
         String recipientList = email.getText().toString();
         final String[] recipients = recipientList.split(",");
         final SharedPreferences settings = getApplicationContext().getSharedPreferences(getResources().getString(R.string.prefKeyName), 0);
         final String emails = email.getText().toString();
-        String ids = settings.getString("userid", null);
-        final String message = "Your id is : " + ids;
+        String pswds = settings.getString("userpswd", null);
+        final String subject = emails;
+        final String message = "Your pswd is : " + pswds;
 
         send.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,7 +36,7 @@ public class findidactivity extends AppCompatActivity {
                 if(!emails.equals("이메일 입력")) {
                     Intent intent = new Intent(Intent.ACTION_SEND);
                     intent.putExtra(Intent.EXTRA_EMAIL, recipients);
-                    intent.putExtra(Intent.EXTRA_SUBJECT, emails);
+                    intent.putExtra(Intent.EXTRA_SUBJECT, subject);
                     intent.putExtra(Intent.EXTRA_TEXT, message);
                     intent.setType("message/rfc822");
                     startActivity(Intent.createChooser(intent, "Choose an email client"));

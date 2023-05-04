@@ -31,14 +31,14 @@ public class MainActivity extends AppCompatActivity {
         final int check = 1;
 
         if(check == settings.getInt("maintain", 0)){
-            Intent to_main_view = new Intent(getApplicationContext(), mainViewactivity.class);
+            Intent to_main_view = new Intent(getApplicationContext(), MainViewActivity.class);
             startActivityForResult(to_main_view, 0);
         }
 
         join.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent to_find_id = new Intent(v.getContext(), joinactivity.class);
+                Intent to_find_id = new Intent(v.getContext(), JoinActivity.class);
                 startActivityForResult(to_find_id,0);
             }
         });
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         to_id.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent to_find_id = new Intent(v.getContext(), findidactivity.class);
+                Intent to_find_id = new Intent(v.getContext(), FindIdActivity.class);
                 startActivityForResult(to_find_id,0);
             }
         });
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
        to_pswd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent to_find_id = new Intent(v.getContext(), findpswdactivity.class);
+                Intent to_find_id = new Intent(v.getContext(), FindPswdActivity.class);
                 startActivityForResult(to_find_id,0);
             }
         });
@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                         editor.apply();
 
-                        Intent to_main_view = new Intent(v.getContext(), mainViewactivity.class);
+                        Intent to_main_view = new Intent(v.getContext(), MainViewActivity.class);
                         startActivityForResult(to_main_view, 0);
                     }
                     else if (ids.equals("Username") || pswds.equals("****"))

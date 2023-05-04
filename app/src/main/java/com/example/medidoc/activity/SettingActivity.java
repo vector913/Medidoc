@@ -1,7 +1,5 @@
 package com.example.medidoc.activity;
 
-import android.bluetooth.BluetoothAdapter;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,7 +11,7 @@ import android.widget.Button;
 
 import com.example.medidoc.R;
 
-public class settingactivity extends AppCompatActivity {
+public class SettingActivity extends AppCompatActivity {
     //설정 Activity의 Button들
     Button exit;
     Button senderlist;
@@ -48,28 +46,28 @@ public class settingactivity extends AppCompatActivity {
         senderlist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent to_sender_list = new Intent(v.getContext(), sendlistactivity.class);
+                Intent to_sender_list = new Intent(v.getContext(), SendListActivity.class);
                 startActivityForResult(to_sender_list,0);
             }
         });
         deviceconnect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent to_bluetooth = new Intent(v.getContext(), bluetoothactivity.class);
+                Intent to_bluetooth = new Intent(v.getContext(), BluetoothActivity.class);
                 startActivityForResult(to_bluetooth,0);
             }
         });
         infosetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent to_sender_list = new Intent(v.getContext(), setmystatusactivity.class);
+                Intent to_sender_list = new Intent(v.getContext(), SetMyStatusActivity.class);
                 startActivityForResult(to_sender_list,0);
             }
         });
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(settingactivity.this);
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(SettingActivity.this);
                 alertDialogBuilder
                         .setTitle("정보 초기화")
                         .setMessage("정보를 정말로 초기화하겠습니까?")
@@ -81,7 +79,7 @@ public class settingactivity extends AppCompatActivity {
                                 SharedPreferences.Editor editor = settings.edit();
                                 editor.clear();
                                 editor.apply();
-                                Intent to_main = new Intent(v.getContext(), joinactivity.class);
+                                Intent to_main = new Intent(v.getContext(), JoinActivity.class);
                                 startActivityForResult(to_main,0);
                             }
                         })

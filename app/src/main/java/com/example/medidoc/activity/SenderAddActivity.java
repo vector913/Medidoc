@@ -27,10 +27,10 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-public class senderaddactivity extends AppCompatActivity {
+public class SenderAddActivity extends AppCompatActivity {
 
     private static final int REQUEST_CODE_PICK_CONTACTS = 1;
-    private static final String TAG = senderaddactivity.class.getSimpleName();
+    private static final String TAG = SenderAddActivity.class.getSimpleName();
     private Uri uriContact;
     private String contactID;
     private String contactNumber = null;
@@ -71,7 +71,7 @@ public class senderaddactivity extends AppCompatActivity {
         cancels.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent to_find_id = new Intent(v.getContext(), settingactivity.class);
+                Intent to_find_id = new Intent(v.getContext(), SettingActivity.class);
                 startActivityForResult(to_find_id,0);
             }
         });
@@ -100,7 +100,7 @@ public class senderaddactivity extends AppCompatActivity {
                 editor.putStringSet("phonename",namel);
                 editor.apply();
 
-                Intent to_find_id = new Intent(v.getContext(), sendlistactivity.class);
+                Intent to_find_id = new Intent(v.getContext(), SendListActivity.class);
                 startActivityForResult(to_find_id,0);
             }
         });
@@ -150,12 +150,12 @@ public class senderaddactivity extends AppCompatActivity {
 
     public void askForContactPermission(){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (ContextCompat.checkSelfPermission(senderaddactivity.this, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
+            if (ContextCompat.checkSelfPermission(SenderAddActivity.this, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
 
                 // Should we show an explanation?
-                if (ActivityCompat.shouldShowRequestPermissionRationale(senderaddactivity.this,
+                if (ActivityCompat.shouldShowRequestPermissionRationale(SenderAddActivity.this,
                         Manifest.permission.READ_CONTACTS)) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(senderaddactivity.this);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(SenderAddActivity.this);
                     builder.setTitle("Contacts access needed");
                     builder.setPositiveButton(android.R.string.ok, null);
                     builder.setMessage("please confirm Contacts access");//TODO put real question
@@ -178,7 +178,7 @@ public class senderaddactivity extends AppCompatActivity {
 
                     // No explanation needed, we can request the permission.
 
-                    ActivityCompat.requestPermissions(senderaddactivity.this,
+                    ActivityCompat.requestPermissions(SenderAddActivity.this,
                             new String[]{Manifest.permission.READ_CONTACTS},
                             REQUEST_CODE_PICK_CONTACTS);
 

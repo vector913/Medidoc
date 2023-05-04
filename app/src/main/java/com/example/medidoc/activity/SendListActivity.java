@@ -25,7 +25,7 @@ import com.example.medidoc.data.phonebook;
 import java.util.ArrayList;
 import java.util.Set;
 
-public class sendlistactivity extends AppCompatActivity {
+public class SendListActivity extends AppCompatActivity {
 
     private static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS =1;
     ArrayList<phonebook> phonebooklist;
@@ -114,7 +114,7 @@ public class sendlistactivity extends AppCompatActivity {
         closes.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
-              Intent to_find_id = new Intent(v.getContext(), mainViewactivity.class);
+              Intent to_find_id = new Intent(v.getContext(), MainViewActivity.class);
               startActivityForResult(to_find_id,0);
           }
       });
@@ -122,7 +122,7 @@ public class sendlistactivity extends AppCompatActivity {
       sender_add.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
-               Intent to_find_id = new Intent(v.getContext(), senderaddactivity.class);
+               Intent to_find_id = new Intent(v.getContext(), SenderAddActivity.class);
                 startActivityForResult(to_find_id,0);
            }
        });
@@ -130,9 +130,9 @@ public class sendlistactivity extends AppCompatActivity {
     private void requestSmsPermission() {
 
         // check permission is given
-        if (ContextCompat.checkSelfPermission(sendlistactivity.this, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(SendListActivity.this, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
             // request permission (see result in onRequestPermissionsResult() method)
-            ActivityCompat.requestPermissions(sendlistactivity.this,
+            ActivityCompat.requestPermissions(SendListActivity.this,
                     new String[]{Manifest.permission.SEND_SMS},
                     PERMISSION_SEND_SMS);
         } else {

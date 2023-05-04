@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
-public class bluetoothactivity extends AppCompatActivity {
+public class BluetoothActivity extends AppCompatActivity {
     TextView mTvBluetoothStatus;
     TextView mTvReceiveData;
     TextView mTvSendData;

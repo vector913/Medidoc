@@ -30,15 +30,15 @@
                 <action android:name="android.intent.action.MAIN"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activity.findpswdactivity" />
-        <activity android:name=".activity.joinactivity" />
-        <activity android:name=".activity.mainViewactivity" />
-        <activity android:name=".activity.senderaddactivity" />
-        <activity android:name=".activity.sendlistactivity" />
-        <activity android:name=".activity.setmystatusactivity" />
-        <activity android:name=".activity.settingactivity" />
-        <activity android:name=".activity.findidactivity" />
-        <activity android:name=".activity.bluetoothactivity" />
+        <activity android:name=".activity.FindPswdActivity" />
+        <activity android:name=".activity.JoinActivity" />
+        <activity android:name=".activity.MainViewActivity" />
+        <activity android:name=".activity.SenderAddActivity" />
+        <activity android:name=".activity.SendListActivity" />
+        <activity android:name=".activity.SetMyStatusActivity" />
+        <activity android:name=".activity.SettingActivity" />
+        <activity android:name=".activity.FindIdActivity" />
+        <activity android:name=".activity.BluetoothActivity" />
     </application>
 
 </manifest>

@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.example.medidoc.R;
 import com.example.medidoc.data.phonebook;
-import com.example.medidoc.activity.sendlistactivity;
+import com.example.medidoc.activity.SendListActivity;
 
 import java.util.ArrayList;
 
@@ -17,7 +17,7 @@ public class CustomAdapter extends BaseAdapter {
 
     Context context;
     ArrayList<phonebook> phonebooklist;
-    public CustomAdapter(sendlistactivity activity, ArrayList<phonebook> phonebooklist) {
+    public CustomAdapter(SendListActivity activity, ArrayList<phonebook> phonebooklist) {
         this.context = activity;
         this.phonebooklist = phonebooklist;
     }

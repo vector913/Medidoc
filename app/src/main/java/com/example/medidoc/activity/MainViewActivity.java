@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.example.medidoc.R;
 import com.example.medidoc.data.listener.gpsinfoListener;
 
-public class mainViewactivity extends AppCompatActivity {
+public class MainViewActivity extends AppCompatActivity {
 
     private final int PERMISSIONS_ACCESS_FINE_LOCATION = 1000;
     private final int PERMISSIONS_ACCESS_COARSE_LOCATION = 1001;
@@ -54,7 +54,7 @@ public class mainViewactivity extends AppCompatActivity {
                                     return;
 
                                 }
-                                gps = new gpsinfoListener(mainViewactivity.this);
+                                gps = new gpsinfoListener(MainViewActivity.this);
                                 // GPS 사용유무 가져오기
                                 if (gps.isGetLocation()) {
 
@@ -87,7 +87,7 @@ public class mainViewactivity extends AppCompatActivity {
         for_set.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent to_find_id = new Intent(v.getContext(), settingactivity.class);
+                Intent to_find_id = new Intent(v.getContext(), SettingActivity.class);
                 startActivityForResult(to_find_id,0);
             }
         });
@@ -99,7 +99,7 @@ public class mainViewactivity extends AppCompatActivity {
                     callPermission();
                     return;
                 }
-                gps = new gpsinfoListener(mainViewactivity.this);
+                gps = new gpsinfoListener(MainViewActivity.this);
                 // GPS 사용유무 가져오기
                 if (gps.isGetLocation()) {
 
