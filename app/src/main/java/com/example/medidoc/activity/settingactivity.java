@@ -14,23 +14,34 @@ import android.widget.Button;
 import com.example.medidoc.R;
 
 public class settingactivity extends AppCompatActivity {
+    //설정 Activity의 Button들
+    Button exit;
+    Button senderlist;
+    Button deviceconnect;
+    Button infosetting;
+    Button reset;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.setting_layout);
-        final  int REQUEST_ENABLE_BT = 1;
-        final Context context = this;
-        Button exit = findViewById(R.id.exit_setting);
-        Button senderlist = findViewById(R.id.to_send_text_setting);
-        Button deviceconnect = findViewById(R.id.device_setting);
-        Button infosetting = findViewById(R.id.my_info_setting);
-        Button reset = findViewById(R.id.info_reset);
 
+        exit = findViewById(R.id.exit_setting);
+        senderlist = findViewById(R.id.to_send_text_setting);
+        deviceconnect = findViewById(R.id.device_setting);
+        infosetting = findViewById(R.id.my_info_setting);
+        reset = findViewById(R.id.info_reset);
+
+        setEventlistener();
+    }
+
+    public void setEventlistener()
+    {
         exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent to_main = new Intent(v.getContext(), MainActivity.class);
-                startActivityForResult(to_main,0);
+               setResult(RESULT_OK);
+               finish();
             }
         });
 
@@ -44,8 +55,6 @@ public class settingactivity extends AppCompatActivity {
         deviceconnect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-
                 Intent to_bluetooth = new Intent(v.getContext(), bluetoothactivity.class);
                 startActivityForResult(to_bluetooth,0);
             }
@@ -60,16 +69,15 @@ public class settingactivity extends AppCompatActivity {
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-                alertDialogBuilder.setTitle("정보 초기화");
-
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(settingactivity.this);
                 alertDialogBuilder
+                        .setTitle("정보 초기화")
                         .setMessage("정보를 정말로 초기화하겠습니까?")
                         .setCancelable(false)
                         .setPositiveButton("예", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                final SharedPreferences settings = getApplicationContext().getSharedPreferences("mediSettings",0);
+                                final SharedPreferences settings = getApplicationContext().getSharedPreferences(getResources().getString(R.string.prefKeyName),0);
                                 SharedPreferences.Editor editor = settings.edit();
                                 editor.clear();
                                 editor.apply();

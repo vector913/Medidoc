@@ -52,7 +52,7 @@ public class senderaddactivity extends AppCompatActivity {
         addn = findViewById(R.id.add_number);
         adds = findViewById(R.id.add_name);
 
-        final SharedPreferences number_list = getApplicationContext().getSharedPreferences("mediSettings",0);
+        final SharedPreferences number_list = getApplicationContext().getSharedPreferences(getResources().getString(R.string.prefKeyName),0);
 
 
         Set<String> phonel = number_list.getStringSet("phonenum",null);

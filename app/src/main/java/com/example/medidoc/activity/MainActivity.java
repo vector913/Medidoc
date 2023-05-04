@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         TextView to_id =  findViewById(R.id.find_id);
         TextView to_pswd =  findViewById(R.id.find_password);
         final CheckBox maintain = findViewById(R.id.checkBox);
-        final SharedPreferences settings = getApplicationContext().getSharedPreferences("mediSettings",0);
+        final SharedPreferences settings = getApplicationContext().getSharedPreferences("getResources().getString(R.string.prefKeyName)",0);
         final EditText id_input = findViewById(R.id.editText_id);
         final EditText pswd_input = findViewById(R.id.editText_password);
         final int check = 1;

@@ -49,7 +49,7 @@ public class sendlistactivity extends AppCompatActivity {
         sender_add = findViewById(R.id.sender_add);
         closes = findViewById(R.id.sender_close);
 
-        number_list= getApplicationContext().getSharedPreferences("mediSettings", 0);
+        number_list= getApplicationContext().getSharedPreferences(getResources().getString(R.string.prefKeyName), 0);
 
         phonel = number_list.getStringSet("phonenum", null);
         namel = number_list.getStringSet("phonename", null);

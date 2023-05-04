@@ -37,7 +37,7 @@ public class mainViewactivity extends AppCompatActivity {
 
         final Handler handler = new Handler();
         final int delay = 10000; //milliseconds
-        final SharedPreferences settings = getApplicationContext().getSharedPreferences("mediSettings",0);
+        final SharedPreferences settings = getApplicationContext().getSharedPreferences(getResources().getString(R.string.prefKeyName),0);
 
         workerthread = new Thread(new Runnable() {
             @Override

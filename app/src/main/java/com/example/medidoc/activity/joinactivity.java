@@ -3,12 +3,14 @@ package com.example.medidoc.activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ParseException;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -19,28 +21,51 @@ import java.util.Locale;
 import static java.lang.Integer.parseInt;
 
 import com.example.medidoc.R;
+import com.example.medidoc.library.StringLib;
 
 public class joinactivity extends AppCompatActivity {
+
+    //Note 회원가입 절차에 필요한 View들.
+    SharedPreferences settings;
+    Calendar myCalendar;
+    RadioGroup rgroup;
+    EditText id;
+    EditText pswd;
+    EditText pswd_ch;
+    EditText birthdate;
+    EditText weight;
+    EditText spec;
+    EditText email;
+    Button chdoub;
+    Button confirm;
+    DatePickerDialog.OnDateSetListener date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.join_layout);
 
-        final SharedPreferences settings = getApplicationContext().getSharedPreferences("mediSettings",0);
-        final Calendar myCalendar = Calendar.getInstance();
-        final RadioGroup rgroup = findViewById(R.id.join_rg);
-        final EditText id = findViewById(R.id.join_id);
-        final EditText pswd = findViewById(R.id.join_password);
-        final EditText pswd_ch = findViewById(R.id.join_password_check);
-        final EditText birthdate = findViewById(R.id.join_calender);
-        final EditText weight = findViewById(R.id.join_weight);
-        final EditText spec = findViewById(R.id.join_specific);
-        final EditText email = findViewById(R.id.join_email);
-        final Button chdoub = findViewById(R.id.join_button_check);
-        final Button confirm = findViewById(R.id.join_button_confirm);
+        settings = getApplicationContext().getSharedPreferences(getResources().getString(R.string.prefKeyName),0);
+        myCalendar = Calendar.getInstance();
+        rgroup = findViewById(R.id.join_rg);
+        RadioButton radioButton = findViewById(R.id.join_boy);
+        //Note Default Select
+        radioButton.setSelected(true);
+        id = findViewById(R.id.join_id);
+        pswd = findViewById(R.id.join_password);
+        pswd_ch = findViewById(R.id.join_password_check);
+        birthdate = findViewById(R.id.join_calender);
+        weight = findViewById(R.id.join_weight);
+        spec = findViewById(R.id.join_specific);
+        email = findViewById(R.id.join_email);
+        chdoub = findViewById(R.id.join_button_check);
+        confirm = findViewById(R.id.join_button_confirm);
 
-        final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+        setEventListener();
+    }
+
+    public void setEventListener(){
+         date = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear,
                                   int dayOfMonth) {
@@ -54,7 +79,7 @@ public class joinactivity extends AppCompatActivity {
             }
 
         };
-       chdoub.setOnClickListener(new View.OnClickListener(){
+        chdoub.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(),"준비중입니다.", Toast.LENGTH_LONG).show();
@@ -74,73 +99,82 @@ public class joinactivity extends AppCompatActivity {
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               int check = 0;
+
                 String ids = id.getText().toString();
-              if(ids.equals("아이디")&&check!=1){
+                if(ids.equals("아이디")||
+                        StringLib.isEmpty(ids)){
                     Toast.makeText(getApplicationContext(),"ID를 입력해주세요!", Toast.LENGTH_LONG).show();
-                    check = 1;
-              }
+                    return;
+                }
 
                 String pswds = pswd.getText().toString();
-                if(pswds.equals("비밀번호")&&check!=1){
+                if(pswds.equals("비밀번호")||
+                        StringLib.isEmpty(pswds)){
                     Toast.makeText(getApplicationContext(),"패스워드를 입력해주세요!", Toast.LENGTH_LONG).show();
-                    check = 1;
+                    return;
                 }
                 String pswchs = pswd_ch.getText().toString();
-                if(!pswchs.equals(pswds)&&check!=1){
+                if(!pswchs.equals(pswds)){
                     Toast.makeText(getApplicationContext(),"비밀번호 확인이 같지 않습니다.", Toast.LENGTH_LONG).show();
-                    check = 1;
+                    return;
                 }
 
                 String birthdates = birthdate.getText().toString();
-                if( birthdates.equals("생년월일")&&check!=1){
+                if( birthdates.equals("생년월일")||
+                        StringLib.isEmpty(birthdates)){
                     Toast.makeText(getApplicationContext(),"생년 월일을 입력해주세요!", Toast.LENGTH_LONG).show();
-                    check = 1;
+                    return;
                 }
-               int sexs = rgroup.getCheckedRadioButtonId();
+                int sexs = rgroup.getCheckedRadioButtonId();
                 if(sexs == R.id.join_boy){
                     sexs = 0;
                 }else if(sexs == R.id.join_girl){
                     sexs = 1;
-                }else if(check!=1){
-                    Toast.makeText(getApplicationContext(),"성별을 선택바랍니다.",Toast.LENGTH_LONG).show();
-                    check = 1;
                 }
-                int weights = 0;
+
+                int weights;
                 String tmp = weight.getText().toString();
-                if(tmp.equals("몸무게")&&check!=1){
+                if(tmp.equals("몸무게")||
+                        StringLib.isEmpty(tmp)){
                     Toast.makeText(getApplicationContext(),"몸무게를 입력해주세요!", Toast.LENGTH_LONG).show();
-                    check = 1;
-                }else if (check == 0){
+                    return;
+                }
+                try
+                {
                     weights = parseInt(tmp);
+                }catch (ParseException e)
+                {
+                    Toast.makeText(getApplicationContext(),"몸무게에 정상적인 숫자를 입력해주세요!", Toast.LENGTH_LONG).show();
+                    return;
                 }
 
                 String specifis = spec.getText().toString();
-                if(specifis.equals("특이사항")&&check!=1){
+
+                if(specifis.equals("특이사항")||
+                        StringLib.isEmpty(specifis)){
                     Toast.makeText(getApplicationContext(),"특이사항을 입력해주세요!", Toast.LENGTH_LONG).show();
-                    check = 1;
+                    return;
                 }
-                 String emails = email.getText().toString();
-                if(emails.equals("examle@email.com")&&check!=1){
+                String emails = email.getText().toString();
+                if(emails.equals("examle@email.com")||
+                        StringLib.isEmpty(emails)){
                     Toast.makeText(getApplicationContext(),"email을 입력해주세요!", Toast.LENGTH_LONG).show();
-                    check = 1;
+                    return;
                 }
 
-                if(check == 0) {
-                    SharedPreferences.Editor editor = settings.edit();
-                    editor.putString("userid",ids);
-                    editor.putString("userpswd",pswds);
-                    editor.putInt("userweight",weights);
-                    editor.putString("userbirth",birthdates);
-                    editor.putString("userspec",specifis);
-                    editor.putString("useremail",emails);
-                    editor.putInt("usersex",sexs);
-                    editor.apply();
-                    Intent to_find_id = new Intent(v.getContext(), MainActivity.class);
-                    startActivityForResult(to_find_id, 0);
-                }
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putString("userid",ids);
+                editor.putString("userpswd",pswds);
+                editor.putInt("userweight",weights);
+                editor.putString("userbirth",birthdates);
+                editor.putString("userspec",specifis);
+                editor.putString("useremail",emails);
+                editor.putInt("usersex",sexs);
+                editor.apply();
+
+                setResult(RESULT_OK);
+                finish();
             }
         });
-
-        }
+    }
 }

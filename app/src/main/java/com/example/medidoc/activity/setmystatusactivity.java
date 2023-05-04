@@ -29,7 +29,7 @@ public class setmystatusactivity extends AppCompatActivity {
         TextView email = findViewById(R.id.my_info_email);
         Button confirm = findViewById(R.id.my_info_button_confirm);
 
-        final SharedPreferences settings = getApplicationContext().getSharedPreferences("mediSettings",0);
+        final SharedPreferences settings = getApplicationContext().getSharedPreferences(getResources().getString(R.string.prefKeyName),0);
 
         id.setText("아이디 : "+settings.getString("userid",null));
         calender.setText(settings.getString("userbirth",null));

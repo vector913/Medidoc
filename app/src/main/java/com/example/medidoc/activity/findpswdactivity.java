@@ -3,6 +3,7 @@ package com.example.medidoc.activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -22,7 +23,7 @@ public class findpswdactivity extends AppCompatActivity {
 
         String recipientList = email.getText().toString();
         final String[] recipients = recipientList.split(",");
-        final SharedPreferences settings = getApplicationContext().getSharedPreferences("mediSettings", 0);
+        final SharedPreferences settings = getApplicationContext().getSharedPreferences(getResources().getString(R.string.prefKeyName), 0);
         final String emails = email.getText().toString();
         String pswds = settings.getString("userpswd", null);
         final String subject = emails;
@@ -45,5 +46,18 @@ public class findpswdactivity extends AppCompatActivity {
             }
 
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == RESULT_OK)
+        {
+            finish();
+        }
+        else {
+            Toast.makeText(getApplicationContext(),"이메일 송신에 실패했습니다.", Toast.LENGTH_LONG).show();
+            finish();
+        }
     }
 }
